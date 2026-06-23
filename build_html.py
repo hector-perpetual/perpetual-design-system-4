@@ -143,10 +143,11 @@ def AC(t):  # helper: envuelve en span de acento
 # ===========================================================================
 def m01():
     return (box(0, 4.55, 13.333, 2.95, fill=ACCENT)
-            + blob(9.0, -1.0, 3.2, YELLOW) + blob(11.6, 2.2, 2.0, ACCENT2) + blob(7.4, 1.6, 3.0, ACCENT)
-            + graphic(8.5, 1.35, 3.95, 4.55, tint=WHITE, variant="growth", shadow=True)
-            + blob(7.9, 3.0, 0.9, YELLOW)
+            + blob(9.0, -1.0, 3.2, YELLOW) + blob(11.6, 2.2, 2.0, ACCENT2) + blob(8.0, 1.5, 3.3, ACCENT)
+            + hexagon(8.55, 2.35, 2.1, WHITE) + box(9.25, 3.05, 0.7, 0.7, fill=ACCENT, oval=True)
+            + blob(11.4, 4.7, 0.8, YELLOW)
             + txt(12.3, 0.55, 0.7, 0.6, "+", 30, ACCENT, 800)
+            + txt(7.4, 5.4, 0.6, 0.5, "+", 24, ACCENT2, 800)
             + logo(0.7, 0.7, 1.5)
             + txt(0.65, 1.5, 7.0, 2.0, f"Marketing para<br>{AC('tu marca.')}", 46, TEXT, 800, lh=0.98)
             + txt(0.7, 3.5, 6.2, 0.3, "Estrategia y crecimiento", 13, TEXT, 600)
@@ -164,7 +165,7 @@ def m02():
             + txt(0.7, 3.4, 3.5, 0.3, "Impresiones gestionadas", 11, MUTED, 600, upper=True, spacing=0.6)
             + txt(0.7, 3.9, 3.6, 2.5, "Acompanamos a tu equipo de principio a fin: estrategia, ejecucion y medicion en un solo lugar.",
                   12.5, MUTED, 400, lh=1.35)
-            + graphic(9.4, 2.3, 3.3, 3.6, tint="#FDE9D6", variant="growth") + footer(2))
+            + graphic(9.4, 2.3, 3.3, 3.6, tint="#FDE9D6", variant="abstract") + footer(2))
 
 
 def m03():
@@ -186,7 +187,7 @@ def m03():
 def m04():
     return (title(f"Sobre el trabajo<br>{AC('actual.')}", size=30)
             + blob(6.7, 1.3, 3.0, ACCENT) + graphic(7.6, 1.5, 3.4, 2.4, tint="#DBE7FB", variant="abstract")
-            + graphic(6.2, 3.4, 3.4, 2.3, tint="#FDE9D6", variant="growth") + blob(9.7, 4.4, 1.9, ACCENT2)
+            + graphic(6.2, 3.4, 3.4, 2.3, tint="#FDE9D6", variant="abstract") + blob(9.7, 4.4, 1.9, ACCENT2)
             + pill(9.5, 4.9, 2.7, "Nueva via del exito", fill=ACCENT2, fg=WHITE, arrow=False)
             + txt(0.7, 2.8, 4.6, 1.8, "Cada cuenta tiene un plan vivo: lo medimos cada semana y ajustamos con base en datos.",
                   13, MUTED, 400, lh=1.35)

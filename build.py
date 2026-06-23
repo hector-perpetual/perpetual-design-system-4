@@ -449,10 +449,12 @@ def m01():
     rect(s, 0, 4.55, 13.333, 2.95, fill=ACCENT, radius=0)
     blob(s, 9.0, -1.0, 3.2, BRAND_YELLOW)
     blob(s, 11.6, 2.2, 2.0, ACCENT2)
-    blob(s, 7.4, 1.6, 3.0, ACCENT)
-    graphic(s, 8.5, 1.35, 3.95, 4.55, tint=BG, variant="growth", shadow=True)
-    blob(s, 7.9, 3.0, 0.9, BRAND_YELLOW)
+    blob(s, 8.0, 1.5, 3.3, ACCENT)
+    hexagon(s, 8.55, 2.35, 2.1, fill=BG)
+    rect(s, 9.25, 3.05, 0.7, 0.7, fill=ACCENT, shape=MSO_SHAPE.OVAL)
+    blob(s, 11.4, 4.7, 0.8, BRAND_YELLOW)
     text(s, 12.3, 0.55, 0.7, 0.6, "+", size=30, color=ACCENT, font=F_DISPLAY)
+    text(s, 7.4, 5.4, 0.6, 0.5, "+", size=24, color=ACCENT2, font=F_DISPLAY)
     logo(s, 0.7, 0.7, 1.5)
     text(s, 0.65, 1.5, 7.0, 2.0, [("Marketing para\n", TEXT, F_DISPLAY, 46), ("tu marca.", ACCENT, F_DISPLAY, 46)],
          line_spacing=0.98)
@@ -475,7 +477,7 @@ def m02():
     text(s, 0.7, 3.9, 3.6, 2.5,
          "Acompanamos a tu equipo de principio a fin: estrategia, ejecucion y medicion en un solo lugar.",
          size=12.5, color=TEXT_MUTED, font=F_BODY, line_spacing=1.35)
-    graphic(s, 9.4, 2.3, 3.3, 3.6, tint="FDE9D6", variant="growth")
+    graphic(s, 9.4, 2.3, 3.3, 3.6, tint="FDE9D6", variant="abstract")
     footer(s, page=2)
 
 
@@ -507,7 +509,7 @@ def m04():
     title(s, [("Sobre el trabajo\n", TEXT), ("actual.", ACCENT)], size=30)
     blob(s, 6.7, 1.3, 3.0, ACCENT)
     graphic(s, 7.6, 1.5, 3.4, 2.4, tint="DBE7FB", variant="abstract")
-    graphic(s, 6.2, 3.4, 3.4, 2.3, tint="FDE9D6", variant="growth")
+    graphic(s, 6.2, 3.4, 3.4, 2.3, tint="FDE9D6", variant="abstract")
     blob(s, 9.7, 4.4, 1.9, ACCENT2)
     pill(s, 9.5, 4.9, 2.7, "Nueva via del exito", fill=ACCENT2, fg=TEXT_ON_DARK, arrow=False)
     text(s, 0.7, 2.8, 4.6, 1.8,
