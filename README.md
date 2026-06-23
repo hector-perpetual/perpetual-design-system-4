@@ -49,3 +49,7 @@ perpetual-design-system-4/
 ```
 
 > Fuente de verdad de la marca (tokens, reglas): repo [`perpetual-design-system-2`](https://github.com/hector-perpetual/perpetual-design-system-2).
+
+## Marca (fuente de verdad)
+
+La carpeta `brand/` contiene los tokens, componentes y reglas de marca de Perpetual (SKILL.md + references). Este repo es autosuficiente: diseno, fuentes (Armin Grotesk embebida), logos y reglas de marca en un solo lugar.
