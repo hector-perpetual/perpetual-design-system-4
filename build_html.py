@@ -96,6 +96,33 @@ def tool_icon(x, y, d, fill):
     return box(x, y, d, d, fill=fill, oval=True) + hexagon(x + d * 0.3, y + d * 0.3, d * 0.4, WHITE)
 
 
+def graphic(x, y, w, h, tint="#DBE7FB", variant="abstract", r=12, shadow=False):
+    """Grafico de marca (en vez de foto): composicion abstracta on-brand.
+    En Perpetual no usamos fotos de personas salvo en la slide de equipo."""
+    out = [box(x, y, w, h, fill=tint, r=r, shadow=shadow)]
+    cx, cy = x + w / 2, y + h / 2
+    if variant == "growth":
+        n, bw, gap = 4, w * 0.13, w * 0.06
+        total = n * bw + (n - 1) * gap
+        bx, base = cx - total / 2, y + h * 0.8
+        cols = [ACCENT, ACCENT2, YELLOW, ACCENT]
+        for i in range(n):
+            bh = h * (0.16 + 0.13 * i)
+            out.append(box(bx + i * (bw + gap), base - bh, bw, bh, fill=cols[i], r=4))
+        out.append(box(cx - w * 0.3, y + h * 0.16, h * 0.2, h * 0.2, fill=ACCENT, oval=True))
+        out.append(hexagon(cx + w * 0.16, y + h * 0.14, h * 0.16, YELLOW))
+    elif variant == "quote":
+        out.append(txt(x, y + h * 0.06, w, h * 0.45, "&ldquo;", 92, ACCENT, 800, "center"))
+        out.append(txt(x, y + h * 0.62, w, h * 0.2,
+                       "&#9733; &#9733; &#9733; &#9733; &#9733;", 17, YELLOW, 700, "center"))
+    else:  # abstract: circulos + hexagono de marca
+        out.append(box(cx - w * 0.28, cy - h * 0.16, h * 0.34, h * 0.34, fill=ACCENT, oval=True))
+        out.append(box(cx + w * 0.03, cy - h * 0.02, h * 0.22, h * 0.22, fill=ACCENT2, oval=True))
+        out.append(box(cx - w * 0.02, cy + h * 0.16, h * 0.13, h * 0.13, fill=YELLOW, oval=True))
+        out.append(hexagon(cx + w * 0.12, cy - h * 0.26, h * 0.17, WHITE))
+    return "".join(out)
+
+
 def title(runs, x=0.7, y=0.7, w=7.5, size=33):
     return logo(0.6, 0.5, 1.15) + txt(x, y + 0.55, w, 1.2, runs, size, TEXT, 800, lh=1.0)
 
@@ -117,7 +144,7 @@ def AC(t):  # helper: envuelve en span de acento
 def m01():
     return (box(0, 4.55, 13.333, 2.95, fill=ACCENT)
             + blob(9.0, -1.0, 3.2, YELLOW) + blob(11.6, 2.2, 2.0, ACCENT2) + blob(7.4, 1.6, 3.0, ACCENT)
-            + photo_ph(8.1, 0.5, 4.7, 6.4, r=10, tint="#DBE7FB")
+            + graphic(8.5, 1.35, 3.95, 4.55, tint=WHITE, variant="growth", shadow=True)
             + blob(7.9, 3.0, 0.9, YELLOW)
             + txt(12.3, 0.55, 0.7, 0.6, "+", 30, ACCENT, 800)
             + logo(0.7, 0.7, 1.5)
@@ -130,14 +157,14 @@ def m01():
 
 def m02():
     return (title(f"Bienvenido a {AC('Perpetual.')}")
-            + blob(5.2, 1.9, 1.7, ACCENT) + photo_ph(4.7, 1.9, 4.3, 3.0, tint="#DBE7FB")
+            + blob(5.2, 1.9, 1.7, ACCENT) + graphic(4.7, 1.9, 4.3, 3.0, tint="#DBE7FB", variant="abstract")
             + box(5.0, 4.55, 2.7, 0.34, fill=ACCENT2, r=17)
             + txt(5.0, 4.55, 2.7, 0.34, "Soporte de marketing", 10.5, WHITE, 600, "center", "middle", spacing=1, upper=True)
             + txt(0.7, 2.55, 3.5, 0.7, "2.9M", 40, ACCENT, 800)
             + txt(0.7, 3.4, 3.5, 0.3, "Impresiones gestionadas", 11, MUTED, 600, upper=True, spacing=0.6)
             + txt(0.7, 3.9, 3.6, 2.5, "Acompanamos a tu equipo de principio a fin: estrategia, ejecucion y medicion en un solo lugar.",
                   12.5, MUTED, 400, lh=1.35)
-            + photo_ph(9.4, 2.3, 3.3, 3.6, tint="#FDE9D6") + footer(2))
+            + graphic(9.4, 2.3, 3.3, 3.6, tint="#FDE9D6", variant="growth") + footer(2))
 
 
 def m03():
@@ -158,8 +185,8 @@ def m03():
 
 def m04():
     return (title(f"Sobre el trabajo<br>{AC('actual.')}", size=30)
-            + blob(6.7, 1.3, 3.0, ACCENT) + photo_ph(7.6, 1.5, 3.4, 2.4, tint="#DBE7FB")
-            + photo_ph(6.2, 3.4, 3.4, 2.3, tint="#FDE9D6") + blob(9.7, 4.4, 1.9, ACCENT2)
+            + blob(6.7, 1.3, 3.0, ACCENT) + graphic(7.6, 1.5, 3.4, 2.4, tint="#DBE7FB", variant="abstract")
+            + graphic(6.2, 3.4, 3.4, 2.3, tint="#FDE9D6", variant="growth") + blob(9.7, 4.4, 1.9, ACCENT2)
             + pill(9.5, 4.9, 2.7, "Nueva via del exito", fill=ACCENT2, fg=WHITE, arrow=False)
             + txt(0.7, 2.8, 4.6, 1.8, "Cada cuenta tiene un plan vivo: lo medimos cada semana y ajustamos con base en datos.",
                   13, MUTED, 400, lh=1.35)
@@ -231,7 +258,7 @@ def m08():
 def m09():
     out = [title(f"Opiniones de {AC('clientes.')}", w=4.5),
            txt(5.0, 1.05, 3.0, 0.8, "4,890 +", 34, ACCENT, 800),
-           photo_ph(9.7, 1.0, 3.0, 3.4, tint="#DBE7FB"), blob(12.2, 3.6, 1.0, YELLOW)]
+           graphic(9.7, 1.0, 3.0, 3.4, tint="#DBE7FB", variant="quote"), blob(12.2, 3.6, 1.0, YELLOW)]
     for i, icon in enumerate([ACCENT2, ACCENT]):
         y = 2.7 + i * 1.55
         fill = SURFACE if i == 0 else ACCENT
@@ -245,7 +272,7 @@ def m09():
 
 
 def m10():
-    out = [title(f"Nueva via del {AC('exito.')}"), photo_ph(0.7, 2.7, 3.2, 3.6, tint="#DBE7FB")]
+    out = [title(f"Nueva via del {AC('exito.')}"), graphic(0.7, 2.7, 3.2, 3.6, tint="#DBE7FB", variant="abstract")]
     steps = [("O2", "Diagnostico", ACCENT, 4.4, 2.6), ("O3", "Estrategia", ACCENT2, 8.3, 2.6),
              ("O4", "Ejecucion", YELLOW, 4.4, 4.5), ("O5", "Optimizacion", BGD, 8.3, 4.5)]
     for n, t, col, x, y in steps:

@@ -410,6 +410,32 @@ def tool_icon(s, x, y, d, fill):
     hexagon(s, x + d * 0.3, y + d * 0.3, d * 0.4, fill=BG)
 
 
+def graphic(s, x, y, w, h, tint="E3ECFB", variant="abstract", shadow=False):
+    """Grafico de marca en vez de foto (en Perpetual no usamos fotos de personas
+    salvo en la slide de equipo)."""
+    rect(s, x, y, w, h, fill=tint, radius=0.06, shadow=shadow)
+    cx, cy = x + w / 2, y + h / 2
+    if variant == "growth":
+        n, bw, gap = 4, w * 0.13, w * 0.06
+        total = n * bw + (n - 1) * gap
+        bx, base = cx - total / 2, y + h * 0.8
+        cols = [ACCENT, ACCENT2, BRAND_YELLOW, ACCENT]
+        for i in range(n):
+            bh = h * (0.16 + 0.13 * i)
+            rect(s, bx + i * (bw + gap), base - bh, bw, bh, fill=cols[i], radius=0.2)
+        rect(s, cx - w * 0.3, y + h * 0.16, h * 0.2, h * 0.2, fill=ACCENT, shape=MSO_SHAPE.OVAL)
+        hexagon(s, cx + w * 0.16, y + h * 0.14, h * 0.16, fill=BRAND_YELLOW)
+    elif variant == "quote":
+        text(s, x, y + h * 0.02, w, h * 0.5, "“", size=80, color=ACCENT, font=F_DISPLAY, align=PP_ALIGN.CENTER)
+        text(s, x, y + h * 0.62, w, h * 0.2, "★ ★ ★ ★ ★", size=16, color=BRAND_YELLOW,
+             font=F_BODY, align=PP_ALIGN.CENTER)
+    else:
+        rect(s, cx - w * 0.28, cy - h * 0.16, h * 0.34, h * 0.34, fill=ACCENT, shape=MSO_SHAPE.OVAL)
+        rect(s, cx + w * 0.03, cy - h * 0.02, h * 0.22, h * 0.22, fill=ACCENT2, shape=MSO_SHAPE.OVAL)
+        rect(s, cx - w * 0.02, cy + h * 0.16, h * 0.13, h * 0.13, fill=BRAND_YELLOW, shape=MSO_SHAPE.OVAL)
+        hexagon(s, cx + w * 0.12, cy - h * 0.26, h * 0.17, fill=BG)
+
+
 def title(s, runs, x=0.7, y=0.7, w=7.5, size=33):
     logo(s, 0.6, 0.5, 1.15)
     text(s, x, y + 0.55, w, 1.2, runs, size=size, font=F_DISPLAY, color=TEXT, line_spacing=1.0)
@@ -424,7 +450,7 @@ def m01():
     blob(s, 9.0, -1.0, 3.2, BRAND_YELLOW)
     blob(s, 11.6, 2.2, 2.0, ACCENT2)
     blob(s, 7.4, 1.6, 3.0, ACCENT)
-    photo_ph(s, 8.1, 0.5, 4.7, 6.4, radius=0.05, tint="DBE7FB")
+    graphic(s, 8.5, 1.35, 3.95, 4.55, tint=BG, variant="growth", shadow=True)
     blob(s, 7.9, 3.0, 0.9, BRAND_YELLOW)
     text(s, 12.3, 0.55, 0.7, 0.6, "+", size=30, color=ACCENT, font=F_DISPLAY)
     logo(s, 0.7, 0.7, 1.5)
@@ -443,13 +469,13 @@ def m02():
     s = slide(BG)
     title(s, [("Bienvenido a ", TEXT), ("Perpetual.", ACCENT)])
     blob(s, 5.2, 1.9, 1.7, ACCENT)
-    photo_ph(s, 4.7, 1.9, 4.3, 3.0, tint="DBE7FB")
+    graphic(s, 4.7, 1.9, 4.3, 3.0, tint="DBE7FB", variant="abstract")
     chip(s, 5.0, 4.55, "SOPORTE DE MARKETING", fill=ACCENT2, fg=TEXT_ON_DARK, w=2.7)
     stat(s, 0.7, 2.6, 3.5, "2.9M", "Impresiones gestionadas", num_color=ACCENT, num_size=40)
     text(s, 0.7, 3.9, 3.6, 2.5,
          "Acompanamos a tu equipo de principio a fin: estrategia, ejecucion y medicion en un solo lugar.",
          size=12.5, color=TEXT_MUTED, font=F_BODY, line_spacing=1.35)
-    photo_ph(s, 9.4, 2.3, 3.3, 3.6, tint="FDE9D6")
+    graphic(s, 9.4, 2.3, 3.3, 3.6, tint="FDE9D6", variant="growth")
     footer(s, page=2)
 
 
@@ -480,8 +506,8 @@ def m04():
     s = slide(BG)
     title(s, [("Sobre el trabajo\n", TEXT), ("actual.", ACCENT)], size=30)
     blob(s, 6.7, 1.3, 3.0, ACCENT)
-    photo_ph(s, 7.6, 1.5, 3.4, 2.4, tint="DBE7FB")
-    photo_ph(s, 6.2, 3.4, 3.4, 2.3, tint="FDE9D6")
+    graphic(s, 7.6, 1.5, 3.4, 2.4, tint="DBE7FB", variant="abstract")
+    graphic(s, 6.2, 3.4, 3.4, 2.3, tint="FDE9D6", variant="growth")
     blob(s, 9.7, 4.4, 1.9, ACCENT2)
     pill(s, 9.5, 4.9, 2.7, "Nueva via del exito", fill=ACCENT2, fg=TEXT_ON_DARK, arrow=False)
     text(s, 0.7, 2.8, 4.6, 1.8,
@@ -575,7 +601,7 @@ def m09():
     s = slide(BG)
     title(s, [("Opiniones de ", TEXT), ("clientes.", ACCENT)], w=4.5)
     text(s, 5.0, 1.05, 3.0, 0.8, "4,890 +", size=34, color=ACCENT, font=F_DISPLAY)
-    photo_ph(s, 9.7, 1.0, 3.0, 3.4, tint="DBE7FB")
+    graphic(s, 9.7, 1.0, 3.0, 3.4, tint="DBE7FB", variant="quote")
     blob(s, 12.2, 3.6, 1.0, BRAND_YELLOW)
     revs = [(ACCENT2, BG), (ACCENT, TEXT_ON_DARK)]
     for i, (icon, _) in enumerate(revs):
@@ -596,7 +622,7 @@ def m09():
 def m10():
     s = slide(BG)
     title(s, [("Nueva via del ", TEXT), ("exito.", ACCENT)])
-    photo_ph(s, 0.7, 2.7, 3.2, 3.6, tint="DBE7FB")
+    graphic(s, 0.7, 2.7, 3.2, 3.6, tint="DBE7FB", variant="abstract")
     steps = [("O2", "Diagnostico", ACCENT, 4.4, 2.6),
              ("O3", "Estrategia", ACCENT2, 8.3, 2.6),
              ("O4", "Ejecucion", BRAND_YELLOW, 4.4, 4.5),
