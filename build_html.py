@@ -128,9 +128,8 @@ def title(runs, x=0.7, y=0.7, w=7.5, size=33):
 
 
 def footer(page):
-    return (logo(0.55, 7.02, 0.92)
-            + txt(1.75, 7.0, 7, 0.3, "Confidencial &middot; Perpetual Technologies &copy; 2026",
-                  8.5, MUTED, 400, "left", "middle")
+    return (txt(0.55, 7.0, 8, 0.3, "Confidencial &middot; Perpetual Technologies &copy; 2026",
+                8.5, MUTED, 400, "left", "middle")
             + txt(11.7, 7.0, 1.1, 0.3, str(page).zfill(2), 8.5, MUTED, 400, "right", "middle"))
 
 

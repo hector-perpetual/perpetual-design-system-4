@@ -240,8 +240,7 @@ def logo(s, x, y, w, dark=False):
 
 def footer(s, dark=False, page=None):
     fg = TEXT_DIM_DARK if dark else TEXT_MUTED
-    logo(s, 0.55, 7.04, 1.05, dark=dark)
-    text(s, 1.85, 7.0, 7, 0.3, "Confidencial  ·  Perpetual Technologies © " + YEAR,
+    text(s, 0.55, 7.0, 8, 0.3, "Confidencial  ·  Perpetual Technologies © " + YEAR,
          size=8.5, color=fg, font="JetBrains Mono", anchor=MSO_ANCHOR.MIDDLE)
     if page is not None:
         text(s, 11.7, 7.0, 1.08, 0.3, str(page).zfill(2), size=8.5, color=fg,
